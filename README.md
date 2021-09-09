@@ -1,3 +1,3 @@
-# Commit changes
- ProTip! Great commit summaries contain fewer than 50 characters. Place extra information in the extended description.
-new repository  test1
+Arduino Multiplexing 4-Digit 7-Segment Display Countdown Timer
+Select Common Cathode or Common Anode Displays
+max. countdown time 99:59 [min:sec]
