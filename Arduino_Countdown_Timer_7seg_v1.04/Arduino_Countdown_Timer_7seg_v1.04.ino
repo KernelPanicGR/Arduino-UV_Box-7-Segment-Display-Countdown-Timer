@@ -34,7 +34,7 @@
 #define PIN_UP      0   // Button UP Countdown
 #define PIN_DOWN    1   // Button Down Countdown
 #define PIN_START   2   // Button Start or STOP
-#define PIN_PAUSE   A4  // Button Pause
+#define PIN_PAUSE   A4  // Reed switch for Pause
 #define POWER_OUT   A3  // output pin For on off 
 #define BUZZER      A2  // output BUZZER pin
 
