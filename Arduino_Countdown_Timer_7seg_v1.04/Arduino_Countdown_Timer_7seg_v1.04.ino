@@ -1,11 +1,12 @@
 /*
   Arduino Multiplexing 4-Digit 7-Segment Display Countdown Timer
-  Select Common Cathode or Common Anode Displays
+  Easy change between Common Cathode or Common Anode Displays
+  Stores values into the EEPROM
   max. countdown time 99:59 [min:sec]
    _________________________________
   | Arduino: IDE 1.8.15             |
   | Board  : Arduino Nano           |
-  | Project: 7segCountdownTimer     |
+  | Project: UV_Box_Timer_7seg      |
   | Version: 1.04                   |
   | First version: 11/11/2017       |
   | Last update  : 22/08/2021       |
@@ -68,7 +69,6 @@
 #define STOP_TIMER  TCCR1B = 0x00;
 
 
-
 //============================================================
 
 bool My_Display_is_CA = NO, // Change type Displays, YES=CA,  NO=CC
@@ -126,19 +126,19 @@ const uint8_t SEGMENTS[21] = {
   B00111010, // o / 20
 };
 
-const uint8_t SEGMENT[] = { DP, G, F, E, D, C, B, A };
+const uint8_t SEGMENT[] = {DP, G, F, E, D, C, B, A};
 const uint8_t NBR_DIGITS = 4; // the number of digits in the LED display
-const uint8_t DIGIT[NBR_DIGITS] = { DIG_1, DIG_2, DIG_3, DIG_4 };
+const uint8_t DIGIT[NBR_DIGITS] = {DIG_1, DIG_2, DIG_3, DIG_4};
 
 /* ======================================================================
    url: http://www.arduino.cc/en/Tutorial/Tone
    notes in the melody:
   ======================================================================= */
 //uint16_t melody[] = { 262, 196, 196, 220, 196, 0, 247, 262 }; // original
-uint16_t melody[] = { 1047, 784, 784, 880, 784, 0, 988, 1047 };
+uint16_t melody[] = {1047, 784, 784, 880, 784, 0, 988, 1047};
 //uint16_t melody[] = { 4186, 3136, 3136, 3520, 3136, 0, 3951, 4186 };
 
-uint16_t noteDurations[] = { 4, 8, 8, 4, 4, 4, 4, 4 };
+uint16_t noteDurations[] = {4, 8, 8, 4, 4, 4, 4, 4};
 
 
 /* ======================================================================
@@ -162,7 +162,7 @@ ISR(TIMER1_OVF_vect) {
 //========================================================
 void setup() {
   /* make buttons pins as input */
-  for ( uint8_t btn = 0; btn < NBR_BTNS; btn++) {
+  for (uint8_t btn = 0; btn < NBR_BTNS; btn++) {
     pinMode(BUTTONS[btn], INPUT_PULLUP);
   }
 
@@ -238,7 +238,7 @@ void loop() {
 //========================================================
 void StartCountdown() {
   //--- Store EEPROM only if different ---
-  if ( EEPROM.read(EEPROM_MINUTE) != Minutes || EEPROM.read(EEPROM_SEC) != Seconds) {
+  if (EEPROM.read(EEPROM_MINUTE) != Minutes || EEPROM.read(EEPROM_SEC) != Seconds) {
     digitalWrite(DP, OFF);
     EEPROM.update(EEPROM_MINUTE, Minutes);
     EEPROM.update(EEPROM_SEC, Seconds);
@@ -434,7 +434,6 @@ void ProcessSpeed() {
 } //== Close ProcessSpeed() ===
 
 
-
 //========================================================
 // Pause
 //========================================================
@@ -460,9 +459,9 @@ void Pause() {
 }//== Close Pause() =====
 
 
-/* ======================================================================
-  UpdateDisplay
-  ======================================================================= */
+//======================================================================
+// UpdateDisplay
+//======================================================================
 void UpdateDisplay() {  // mmss
   if (!FlagSetSec) {
     showDigit (Minutes / 10, 0);
@@ -475,9 +474,9 @@ void UpdateDisplay() {  // mmss
 }//==Close UpdateDisplay ====
 
 
-/* ======================================================================
-  showDigit
-  ======================================================================= */
+//======================================================================
+// showDigit
+//====================================================================== 
 // Displays given number on a 7-segment display at the given digit position
 void showDigit(uint8_t number, uint8_t dig) {
   digitalWrite(DIGIT[dig], HIGH );
@@ -522,7 +521,7 @@ bool getBtnStableLevel(uint8_t Btn_pin) {
     OLDbtnLevels[Btn_pin] = pinLevel;
   }
   // Once the button has been stable for
-  if (( millis() - BtnPressTime) > DEBOUNCE_TIME) { // Debounce
+  if ((millis() - BtnPressTime) > DEBOUNCE_TIME) { // Debounce
     StableBtnLevel[Btn_pin] = pinLevel;
   }
   return StableBtnLevel[Btn_pin];
@@ -574,7 +573,6 @@ void BuzzerBeep() {
   delay(26);
   noTone(BUZZER);
 }//==Close BuzzerBeep ======
-
 
 
 /*********( END Code )***********/
