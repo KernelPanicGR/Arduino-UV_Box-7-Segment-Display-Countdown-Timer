@@ -5254,7 +5254,7 @@ Source: &lt;a href="http://www.farnell.com/datasheets/91181.pdf"&gt; Data sheet 
 <part name="T4" library="1_My_Library" deviceset="2N2222" device="" value="PN2222A"/>
 <part name="Q1" library="transistor-power" library_urn="urn:adsk.eagle:library:400" deviceset="IRF540" device="" package3d_urn="urn:adsk.eagle:package:29484/3" value="IRL540"/>
 <part name="R15" library="1_My_Library" deviceset="RESISTOR" device="R0805" value="2k2"/>
-<part name="LED" library="1_My_Library" deviceset="LED" device="3MM" value="Plue"/>
+<part name="LED" library="1_My_Library" deviceset="LED" device="3MM" value="Blue"/>
 <part name="SUPPLY10" library="1_Stavros" deviceset="+12V" device=""/>
 <part name="SUPPLY23" library="1_Stavros" deviceset="0V" device=""/>
 <part name="R17" library="1_Stavros" deviceset="RESISTOR" device="R0805" value="22k"/>
