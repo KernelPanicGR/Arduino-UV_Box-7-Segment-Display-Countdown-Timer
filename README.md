@@ -1,4 +1,4 @@
-Arduino UV Box Countdown Timer <br/>
+# Arduino UV Box Countdown Timer 
 Multiplexing 4-Digit 7-Segment Display<br/>
 Easy change between Common Cathode or Common Anode Displays<br/>
 Stores values into the EEPROM <br/>
